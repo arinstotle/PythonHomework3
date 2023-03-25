@@ -26,7 +26,7 @@ for status in statuses:
         if status[4] == '2':
             groupAndCounts[status[2]] += 1
     else:
-        groupAndCounts[status[2]] = 1
+        groupAndCounts[status[2]] = 0
 
 sortedGroupAndCounts = dict(sorted(groupAndCounts.items(), key=lambda x: x[1]))
 
