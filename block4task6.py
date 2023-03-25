@@ -20,17 +20,13 @@ checks = load_csv('checks.csv')
 
 # task, variant, group, time, status, achievements
 statuses = load_csv('statuses.csv')
-
 groupAndCounts = {}
-
 for status in statuses:
-    print(status[4])
     if status[2] in groupAndCounts:
         if status[4] == '2':
             groupAndCounts[status[2]] += 1
     else:
         groupAndCounts[status[2]] = 1
-
 
 sortedGroupAndCounts = dict(sorted(groupAndCounts.items(), key=lambda x: x[1]))
 
