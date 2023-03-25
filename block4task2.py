@@ -21,24 +21,14 @@ checks = load_csv('checks.csv')
 # task, variant, group, time, status, achievements
 statuses = load_csv('statuses.csv')
 
-hours = {}
+param = [parse_time(row[4]) for row in messages] \
+        + [parse_time(row[2]) for row in checks] \
+        + [parse_time(row[3]) for row in statuses]
 
-for message in messages:
-    t_time = parse_time(message[4])
-    hour = t_time.hour
+hours = [val.hour for val in param]
 
-    if hour in hours:
-        hours[hour] += 1
-    else:
-        hours[hour] = 1
+plt.hist(hours,  bins=24, color='black', range=(0, 24))
 
-
-plt.bar(range(24), hours.values(), align='center',
-        color='black',
-        label='Hours')
-
-plt.xticks(range(24))
 plt.xlabel('Hours')
 plt.ylabel('Activity')
-plt.legend()
 plt.show()
