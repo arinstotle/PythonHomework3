@@ -33,20 +33,13 @@ for mes in mesages:
     dict_messages[parse_time(mes[4]).weekday()] += 1
 
 
-for status in statuses:
-    dict_statuses[parse_time(status[3]).weekday()] += 1
-
-days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 plt.bar(range(7), dict_messages.values(), align='center',
-        color='red',
-        label='Messages')
-
-plt.bar(range(7), dict_statuses.values(), align='center',
         color='black',
-        label='Statuses')
+        label='Messages', width=0.5)
 
-plt.xticks(range(len(days)), days)
+plt.xticks(range(len(days)), days, rotation=20)
 plt.xlabel('Days of week')
 plt.ylabel('Activity')
 plt.legend()
